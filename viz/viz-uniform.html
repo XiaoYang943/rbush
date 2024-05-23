@@ -7,13 +7,11 @@
 <button id="insert2">Insert 1000</button>
 <button id="insert3">Bulk-insert 50000</button>
 <button id="insert4">Bulk-insert 1000</button>
-<button id="remove">Remove leftmost 10000</button>
 
-<script src="../rbush.js"></script>
 <script src="viz.js"></script>
-<script>
-
-var N = 100000;
+<script type="module">
+import RBush from '../index.js';
+var N = 10000;
 
 function genData(N) {
     var data = [];
@@ -23,7 +21,7 @@ function genData(N) {
     return data;
 }
 
-var tree = rbush(10);
+var tree = new RBush(10);
 var data = [];
 
 genBulkInsert(N)();
@@ -40,7 +38,7 @@ function genInsertOneByOne(K) {
 
         data = data.concat(data2);
 
-        draw();
+        draw(tree);
     };
 }
 
@@ -54,7 +52,7 @@ function genBulkInsert(K) {
 
         data = data.concat(data2);
 
-        draw();
+        draw(tree);
     };
 }
 
@@ -63,6 +61,6 @@ document.getElementById('insert2').onclick = genInsertOneByOne(1000);
 document.getElementById('insert3').onclick = genBulkInsert(50000);
 document.getElementById('insert4').onclick = genBulkInsert(1000);
 document.getElementById('canvas').onclick = search;
-document.getElementById('remove').onclick = remove;
+
 
 </script>

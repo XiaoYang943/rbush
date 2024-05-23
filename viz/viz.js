@@ -67,7 +67,7 @@ function drawTree(node, level) {
     }
 }
 
-function draw() {
+function draw(tree) {
     rects = [];
     drawTree(tree.data, 0);
 
@@ -91,15 +91,3 @@ function search(e) {
     console.timeEnd('1 pixel search');
 }
 
-function remove() {
-    data.sort(tree.compareMinX);
-    console.time('remove 10000');
-    for (var i = 0; i < 10000; i++) {
-        tree.remove(data[i]);
-    }
-    console.timeEnd('remove 10000');
-
-    data.splice(0, 10000);
-
-    draw();
-};
